@@ -12,6 +12,9 @@ export class AppComponent {
   palabraOculta = '';
   intentos = 0;
 
+  gano = false;
+  perdio = false;
+
 
   letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
   'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S',
@@ -30,6 +33,20 @@ export class AppComponent {
        }
     }
     this.palabraOculta = palabraOcultaArr.join(' ');
+  }
+  verificaGane(){
+    const palabraArr = this.palabraOculta.split(' ');
+    const palabraEvaluar = palabraArr.join('');
+
+    if( palabraEvaluar === this.palabra ){
+      this.gano =  true;
+    }
+
+    if( this.intentos >= 9 ){
+      this.perdio = true;
+
+    }
+
   }
 
   existeLetra( letra ){
